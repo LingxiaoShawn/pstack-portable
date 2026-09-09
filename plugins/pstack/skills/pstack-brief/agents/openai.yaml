@@ -1,0 +1,4 @@
+interface:
+  display_name: pstack · brief
+  short_description: Create a concise, evidence-backed HTML presentation explaining
+    a completed change or subsystem.

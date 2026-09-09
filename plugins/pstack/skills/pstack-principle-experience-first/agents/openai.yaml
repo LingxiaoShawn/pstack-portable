@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · principle-experience-first
+  short_description: 'Apply when product, UX, or feature-scope tradeoffs come up.
+    Choose user delight over implementation '
+policy:
+  allow_implicit_invocation: false

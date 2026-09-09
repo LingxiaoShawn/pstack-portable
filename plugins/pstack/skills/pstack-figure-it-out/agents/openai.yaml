@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · figure-it-out
+  short_description: 'Design an auditable playbook when no narrower one fits: a large
+    migration, an ambitious multi-part c'
+policy:
+  allow_implicit_invocation: false

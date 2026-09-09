@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · make-bot-ui
+  short_description: Build a UI for an explicitly configured webhook service; requires
+    a real service endpoint and suppor
+policy:
+  allow_implicit_invocation: false

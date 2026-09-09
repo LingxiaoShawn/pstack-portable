@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · automate-me
+  short_description: Turn demonstrated personal engineering preferences into a focused
+    reusable skill for the current cli
+policy:
+  allow_implicit_invocation: false

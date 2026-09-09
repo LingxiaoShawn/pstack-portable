@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · principle-redesign-from-first-principles
+  short_description: Apply when integrating a new requirement into an existing design.
+    Redesign as if the requirement had
+policy:
+  allow_implicit_invocation: false

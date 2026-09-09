@@ -1,0 +1,4 @@
+interface:
+  display_name: pstack · refactor
+  short_description: Simplify the current change or a named subsystem without changing
+    its behavior, focusing on maintain

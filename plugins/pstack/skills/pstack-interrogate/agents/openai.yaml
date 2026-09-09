@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · interrogate
+  short_description: Review a diff adversarially against its intent, correctness and
+    maintainability, without automatical
+policy:
+  allow_implicit_invocation: false

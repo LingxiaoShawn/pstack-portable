@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · recall
+  short_description: Reconstruct current project context from available conversation
+    history, checkpoints and git state.
+policy:
+  allow_implicit_invocation: false

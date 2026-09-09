@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · principle-test-behavior-not-implementation
+  short_description: Apply when you write, change, or keep a test. Call the code the
+    way its users do and assert the resu
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · how
+  short_description: Trace how a function or subsystem works from actual code and
+    explain its data and control flow.
+policy:
+  allow_implicit_invocation: false

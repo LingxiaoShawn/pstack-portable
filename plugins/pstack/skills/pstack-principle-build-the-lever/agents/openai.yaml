@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · principle-build-the-lever
+  short_description: 'Apply to any non-trivial work, not just bulk work: edits, migrations,
+    analyses, checks. Build the to'
+policy:
+  allow_implicit_invocation: false

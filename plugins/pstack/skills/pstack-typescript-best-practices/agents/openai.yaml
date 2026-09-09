@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · typescript-best-practices
+  short_description: TypeScript best practices. Use when reading or editing any .ts
+    or .tsx file.
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,3 @@
+interface:
+  display_name: "pstack runtime"
+  short_description: "Resolve pstack paths and host capabilities."

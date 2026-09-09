@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · technical-writing
+  short_description: 'Layered technical-writing standard: Diátaxis structure, Google
+    developer style sentences, STE instru'
+policy:
+  allow_implicit_invocation: false

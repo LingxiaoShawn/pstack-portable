@@ -1,0 +1,206 @@
+{
+  "architect": {
+    "path": "../architect/SKILL.md",
+    "invoke": "/pstack:architect"
+  },
+  "arena": {
+    "path": "../arena/SKILL.md",
+    "invoke": "/pstack:arena"
+  },
+  "automate-me": {
+    "path": "../automate-me/SKILL.md",
+    "invoke": "/pstack:automate-me"
+  },
+  "blast-radius": {
+    "path": "../blast-radius/SKILL.md",
+    "invoke": "/pstack:blast-radius"
+  },
+  "brief": {
+    "path": "../brief/SKILL.md",
+    "invoke": "/pstack:brief"
+  },
+  "bro": {
+    "path": "../bro/SKILL.md",
+    "invoke": "/pstack:bro"
+  },
+  "create-verification-skill": {
+    "path": "../create-verification-skill/SKILL.md",
+    "invoke": "/pstack:create-verification-skill"
+  },
+  "deslop": {
+    "path": "../deslop/SKILL.md",
+    "invoke": "/pstack:deslop"
+  },
+  "figure-it-out": {
+    "path": "../figure-it-out/SKILL.md",
+    "invoke": "/pstack:figure-it-out"
+  },
+  "how": {
+    "path": "../how/SKILL.md",
+    "invoke": "/pstack:how"
+  },
+  "interrogate": {
+    "path": "../interrogate/SKILL.md",
+    "invoke": "/pstack:interrogate"
+  },
+  "maintain-verification-skill": {
+    "path": "../maintain-verification-skill/SKILL.md",
+    "invoke": "/pstack:maintain-verification-skill"
+  },
+  "make-bot-ui": {
+    "path": "../make-bot-ui/SKILL.md",
+    "invoke": "/pstack:make-bot-ui"
+  },
+  "no-comments": {
+    "path": "../no-comments/SKILL.md",
+    "invoke": "/pstack:no-comments"
+  },
+  "poteto-mode": {
+    "path": "../poteto-mode/SKILL.md",
+    "invoke": "/pstack:poteto-mode"
+  },
+  "principle-attack-the-premise": {
+    "path": "../principle-attack-the-premise/SKILL.md",
+    "invoke": "/pstack:principle-attack-the-premise"
+  },
+  "principle-boundary-discipline": {
+    "path": "../principle-boundary-discipline/SKILL.md",
+    "invoke": "/pstack:principle-boundary-discipline"
+  },
+  "principle-build-the-lever": {
+    "path": "../principle-build-the-lever/SKILL.md",
+    "invoke": "/pstack:principle-build-the-lever"
+  },
+  "principle-encode-lessons-in-structure": {
+    "path": "../principle-encode-lessons-in-structure/SKILL.md",
+    "invoke": "/pstack:principle-encode-lessons-in-structure"
+  },
+  "principle-exhaust-the-design-space": {
+    "path": "../principle-exhaust-the-design-space/SKILL.md",
+    "invoke": "/pstack:principle-exhaust-the-design-space"
+  },
+  "principle-experience-first": {
+    "path": "../principle-experience-first/SKILL.md",
+    "invoke": "/pstack:principle-experience-first"
+  },
+  "principle-fix-root-causes": {
+    "path": "../principle-fix-root-causes/SKILL.md",
+    "invoke": "/pstack:principle-fix-root-causes"
+  },
+  "principle-foundational-thinking": {
+    "path": "../principle-foundational-thinking/SKILL.md",
+    "invoke": "/pstack:principle-foundational-thinking"
+  },
+  "principle-guard-the-context-window": {
+    "path": "../principle-guard-the-context-window/SKILL.md",
+    "invoke": "/pstack:principle-guard-the-context-window"
+  },
+  "principle-laziness-protocol": {
+    "path": "../principle-laziness-protocol/SKILL.md",
+    "invoke": "/pstack:principle-laziness-protocol"
+  },
+  "principle-make-operations-idempotent": {
+    "path": "../principle-make-operations-idempotent/SKILL.md",
+    "invoke": "/pstack:principle-make-operations-idempotent"
+  },
+  "principle-migrate-callers-then-delete-legacy-apis": {
+    "path": "../principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+    "invoke": "/pstack:principle-migrate-callers-then-delete-legacy-apis"
+  },
+  "principle-minimize-reader-load": {
+    "path": "../principle-minimize-reader-load/SKILL.md",
+    "invoke": "/pstack:principle-minimize-reader-load"
+  },
+  "principle-model-the-domain": {
+    "path": "../principle-model-the-domain/SKILL.md",
+    "invoke": "/pstack:principle-model-the-domain"
+  },
+  "principle-never-block-on-the-human": {
+    "path": "../principle-never-block-on-the-human/SKILL.md",
+    "invoke": "/pstack:principle-never-block-on-the-human"
+  },
+  "principle-outcome-oriented-execution": {
+    "path": "../principle-outcome-oriented-execution/SKILL.md",
+    "invoke": "/pstack:principle-outcome-oriented-execution"
+  },
+  "principle-prove-it-works": {
+    "path": "../principle-prove-it-works/SKILL.md",
+    "invoke": "/pstack:principle-prove-it-works"
+  },
+  "principle-redesign-from-first-principles": {
+    "path": "../principle-redesign-from-first-principles/SKILL.md",
+    "invoke": "/pstack:principle-redesign-from-first-principles"
+  },
+  "principle-separate-before-serializing-shared-state": {
+    "path": "../principle-separate-before-serializing-shared-state/SKILL.md",
+    "invoke": "/pstack:principle-separate-before-serializing-shared-state"
+  },
+  "principle-sequence-verifiable-units": {
+    "path": "../principle-sequence-verifiable-units/SKILL.md",
+    "invoke": "/pstack:principle-sequence-verifiable-units"
+  },
+  "principle-subtract-before-you-add": {
+    "path": "../principle-subtract-before-you-add/SKILL.md",
+    "invoke": "/pstack:principle-subtract-before-you-add"
+  },
+  "principle-test-behavior-not-implementation": {
+    "path": "../principle-test-behavior-not-implementation/SKILL.md",
+    "invoke": "/pstack:principle-test-behavior-not-implementation"
+  },
+  "principle-type-system-discipline": {
+    "path": "../principle-type-system-discipline/SKILL.md",
+    "invoke": "/pstack:principle-type-system-discipline"
+  },
+  "recall": {
+    "path": "../recall/SKILL.md",
+    "invoke": "/pstack:recall"
+  },
+  "refactor": {
+    "path": "../refactor/SKILL.md",
+    "invoke": "/pstack:refactor"
+  },
+  "reflect": {
+    "path": "../reflect/SKILL.md",
+    "invoke": "/pstack:reflect"
+  },
+  "setup-pstack": {
+    "path": "../setup-pstack/SKILL.md",
+    "invoke": "/pstack:setup-pstack"
+  },
+  "show-me-your-work": {
+    "path": "../show-me-your-work/SKILL.md",
+    "invoke": "/pstack:show-me-your-work"
+  },
+  "swarm": {
+    "path": "../swarm/SKILL.md",
+    "invoke": "/pstack:swarm"
+  },
+  "tdd": {
+    "path": "../tdd/SKILL.md",
+    "invoke": "/pstack:tdd"
+  },
+  "teach": {
+    "path": "../teach/SKILL.md",
+    "invoke": "/pstack:teach"
+  },
+  "technical-writing": {
+    "path": "../technical-writing/SKILL.md",
+    "invoke": "/pstack:technical-writing"
+  },
+  "typescript-best-practices": {
+    "path": "../typescript-best-practices/SKILL.md",
+    "invoke": "/pstack:typescript-best-practices"
+  },
+  "unslop": {
+    "path": "../unslop/SKILL.md",
+    "invoke": "/pstack:unslop"
+  },
+  "why": {
+    "path": "../why/SKILL.md",
+    "invoke": "/pstack:why"
+  },
+  "runtime": {
+    "path": "../pstack-runtime/SKILL.md",
+    "invoke": "/pstack:pstack-runtime"
+  }
+}

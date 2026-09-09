@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · maintain-verification-skill
+  short_description: 'Periodic pass that keeps a project''s verification skill and
+    feature map honest: parallel source read'
+policy:
+  allow_implicit_invocation: false

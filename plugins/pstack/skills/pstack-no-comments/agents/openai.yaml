@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · no-comments
+  short_description: Clean noisy comments while preserving necessary explanations,
+    constraints, documentation and tool di
+policy:
+  allow_implicit_invocation: false

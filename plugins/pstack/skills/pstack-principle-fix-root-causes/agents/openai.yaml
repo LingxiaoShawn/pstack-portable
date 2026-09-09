@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · principle-fix-root-causes
+  short_description: Apply when debugging. Trace each symptom to its root cause and
+    fix it there; reproduce first, ask wh
+policy:
+  allow_implicit_invocation: false

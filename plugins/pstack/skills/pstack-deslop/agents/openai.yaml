@@ -1,0 +1,4 @@
+interface:
+  display_name: pstack · deslop
+  short_description: Remove unnecessary code introduced by the current task while
+    preserving behavior and local conventio

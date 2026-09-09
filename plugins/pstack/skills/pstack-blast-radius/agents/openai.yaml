@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · blast-radius
+  short_description: Find what a change could break somewhere else before it ships,
+    beyond the diff, and prove the one fa
+policy:
+  allow_implicit_invocation: false

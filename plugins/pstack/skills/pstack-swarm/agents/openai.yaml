@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · swarm
+  short_description: Coordinate bounded parallel work over separate slices or candidates,
+    with explicit evidence and cove
+policy:
+  allow_implicit_invocation: false

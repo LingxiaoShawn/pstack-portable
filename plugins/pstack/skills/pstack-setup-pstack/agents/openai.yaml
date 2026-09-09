@@ -1,0 +1,4 @@
+interface:
+  display_name: pstack · setup-pstack
+  short_description: Configure portable pstack preferences and check available tools
+    in Codex or Claude Code.

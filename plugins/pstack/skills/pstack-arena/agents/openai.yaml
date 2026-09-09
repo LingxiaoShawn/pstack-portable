@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · arena
+  short_description: Compare distinct solutions to the same task, select a maintainable
+    base, combine useful ideas, and v
+policy:
+  allow_implicit_invocation: false

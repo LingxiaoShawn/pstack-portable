@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · reflect
+  short_description: Review a completed run for concrete workflow improvements using
+    actual evidence from that run.
+policy:
+  allow_implicit_invocation: false

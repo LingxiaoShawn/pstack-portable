@@ -1,0 +1,10 @@
+{
+  "name": "pstack",
+  "version": "0.1.0",
+  "description": "Portable pstack workflows for readable code and clear, verified handoffs.",
+  "author": {
+    "name": "Lingxiao Zhao; upstream by Lauren Tan"
+  },
+  "license": "MIT",
+  "skills": "./skills/"
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · architect
+  short_description: Sketch types, signatures, and module structure before code, then
+    stay in the loop while implementati
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · principle-separate-before-serializing-shared-state
+  short_description: Apply when concurrent actors might write to the same file, branch,
+    key, or state object. Eliminate t
+policy:
+  allow_implicit_invocation: false

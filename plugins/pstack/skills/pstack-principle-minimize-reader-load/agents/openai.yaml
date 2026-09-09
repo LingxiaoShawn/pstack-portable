@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · principle-minimize-reader-load
+  short_description: Apply when reviewing or shaping code that's hard to trace. Count
+    layers between question and answer,
+policy:
+  allow_implicit_invocation: false

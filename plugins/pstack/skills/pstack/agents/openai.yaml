@@ -1,0 +1,6 @@
+interface:
+  display_name: pstack · poteto-mode
+  short_description: Use pstack for deliberate implementation, refactoring, investigation,
+    and clear evidence-backed hand
+policy:
+  allow_implicit_invocation: false
