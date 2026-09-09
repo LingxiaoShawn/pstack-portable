@@ -74,7 +74,14 @@ def files(directory):
             and "node_modules" not in p.parts}
 
 
-def make_plugin(destination, client):
+def release_version():
+    version = (ROOT / "overrides/version.txt").read_text(encoding="utf-8").strip()
+    if not re.fullmatch(r"(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)", version):
+        raise ValueError("overrides/version.txt must contain a release version: MAJOR.MINOR.PATCH")
+    return version
+
+
+def make_plugin(destination, client, version):
     source = ROOT / "upstream/pstack"
     shutil.copytree(source / "skills", destination / "skills")
     shutil.copytree(ROOT / "overrides/skills", destination / "skills", dirs_exist_ok=True)
@@ -121,12 +128,15 @@ def make_plugin(destination, client):
         (runtime_dir / "agents").mkdir()
         (runtime_dir / "agents/openai.yaml").write_text('interface:\n  display_name: "pstack runtime"\n  short_description: "Resolve pstack paths and host capabilities."\n')
     mapping["runtime"] = "pstack-runtime"
-    skill_map = {name: {"path": f"../{actual}/SKILL.md", "invoke": "$" + actual if client == "codex" else "/pstack:" + actual}
+    skill_map = {name: {"path": f"../{actual}/SKILL.md", "invoke": "$pstack:" + actual if client == "codex" else "/pstack:" + actual}
                  for name, actual in mapping.items()}
+    if client == "codex":
+        for name, actual in mapping.items():
+            skill_map[name]["invoke_standalone"] = "$" + actual
     (runtime_dir / "skill-map.json").write_text(json.dumps(skill_map, indent=2) + "\n")
     shutil.copy2(ROOT / "LICENSE", destination / "LICENSE")
     shutil.copy2(ROOT / "upstream.lock.json", destination / "upstream.lock.json")
-    manifest = {"name": "pstack", "version": "0.1.0", "description": "Portable pstack workflows for readable code and clear, verified handoffs.",
+    manifest = {"name": "pstack", "version": version, "description": "Portable pstack workflows for readable code and clear, verified handoffs.",
                 "author": {"name": "Lingxiao Zhao; upstream by Lauren Tan"}, "license": "MIT", "skills": "./skills/"}
     if client == "codex":
         manifest["interface"] = {"displayName": "pstack", "shortDescription": "Readable code and clear engineering handoffs.",
@@ -137,7 +147,13 @@ def make_plugin(destination, client):
         agents = destination / "agents"
         agents.mkdir()
         for name, workflow in [("poteto-agent", "poteto-mode"), ("comment-sicko", "no-comments")]:
-            (agents / f"{name}.md").write_text(f'---\nname: {name}\ndescription: Follow the portable pstack {workflow} workflow for a scoped task.\nmodel: inherit\n---\n\nRead the bundled skills/{workflow}/SKILL.md and its runtime contract before work. Resolve paths from the installed plugin root. Follow the parent task and host permissions. Return actual evidence and remaining gaps.\n')
+            (agents / f"{name}.md").write_text(
+                f'---\nname: {name}\ndescription: Follow the portable pstack {workflow} workflow for a scoped task.\nmodel: inherit\n---\n\n'
+                f'Read `${{CLAUDE_PLUGIN_ROOT}}/skills/{workflow}/SKILL.md` and '
+                '`${CLAUDE_PLUGIN_ROOT}/skills/pstack-runtime/runtime.md` before work. '
+                'These paths belong to this plugin, not the project directory. '
+                'Resolve other workflows with `${CLAUDE_PLUGIN_ROOT}/skills/pstack-runtime/skill-map.json`. '
+                'Follow the parent task and host permissions. Return actual evidence and remaining gaps.\n')
     meta_dir = destination / (".codex-plugin" if client == "codex" else ".claude-plugin")
     meta_dir.mkdir(exist_ok=True)
     (meta_dir / "plugin.json").write_text(json.dumps(manifest, indent=2) + "\n")
@@ -148,11 +164,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
+    version = release_version()
     stale = []
     with tempfile.TemporaryDirectory(prefix="pstack-build-") as temp:
         for client, relative in TARGETS.items():
             generated = Path(temp) / client
-            count = make_plugin(generated, client)
+            count = make_plugin(generated, client, version)
             target = ROOT / relative
             if args.check:
                 if not target.exists() or files(generated) != files(target):

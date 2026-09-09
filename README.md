@@ -4,6 +4,7 @@
 移植到 Codex 和 Claude Code，保留严谨的工程流程，重点改善代码可维护性和人类交接。
 
 包含上游 47 个主技能、3 个新增入口，以及 1 个运行适配技能。
+移植版发行版本由 [overrides/version.txt](overrides/version.txt) 管理。
 上游固定为 0.15.0 / `27e2a62ff94f9af4b5e68435e41cdceacadb840c`。
 这是独立移植版，不是 Cursor、OpenAI 或 Anthropic 官方发行。
 
@@ -51,7 +52,7 @@ claude --plugin-dir ./claude/plugins/pstack
 
 **怎么用最省事**
 
-| 你的目标 | Codex | Claude Code |
+| 你的目标 | Codex 独立技能安装 | Claude Code |
 | --- | --- | --- |
 | 按 pstack 完成工程任务 | `$pstack` | `/pstack:poteto-mode` |
 | 清理代码并验证行为 | `$pstack-refactor` | `/pstack:refactor` |
@@ -96,15 +97,39 @@ python3 scripts/install_codex.py --uninstall
 项目级移除加上相同的 `--project` 参数。不要同时安装用户级和项目级副本，避免重复发现。
 也不要同时启用独立技能安装和同一套 Codex marketplace 插件。
 
-Claude Code 更新与卸载使用客户端自己的插件管理：
+Claude Code 从 Git marketplace 安装时，先刷新 marketplace，再更新插件：
 
 ```sh
+claude plugin marketplace update pstack-portable
 claude plugin update pstack@pstack-portable --scope user
+```
+
+这种安装方式使用版本缓存，只有发行版提升版本号后，更新才会取得新内容。
+本地目录 marketplace 和 `--plugin-dir` 直接使用目录中的文件：先拉取该目录的代码，
+再打开新会话加载更新。卸载使用：
+
+```sh
 claude plugin uninstall pstack@pstack-portable --scope user
 ```
 
-仓库也提供 `.agents/plugins/marketplace.json` 和 `.codex-plugin/plugin.json`，可用于支持本地
-marketplace 的 Codex 界面。默认建议使用上面的独立技能安装路径，覆盖 CLI 和 IDE 使用。
+Codex 也可以使用仓库提供的 marketplace 插件。支持插件命令的 CLI 可注册仓库目录并安装：
+
+```sh
+codex plugin marketplace add /absolute/path/to/pstack-portable
+codex plugin add pstack@pstack-portable
+```
+
+插件模式的技能名称带 `pstack:` 命名空间，与上面的独立安装不同：
+
+```text
+$pstack:pstack 完成这个任务，给我简洁的结果和验证依据。
+$pstack:pstack-refactor 清理这次改动，保持行为不变。
+$pstack:pstack-teach 用中文解释这段代码。
+```
+
+本地 marketplace 源更新到新的发行版本后，再运行 `codex plugin add pstack@pstack-portable`，
+并在新会话中使用。`skill-map.json` 的 `invoke` 提供插件名称，`invoke_standalone`
+提供 Codex 独立安装名称；内部工作流始终按 `path` 读取，不依赖某一种调用名称。
 
 **配置**
 
@@ -162,6 +187,11 @@ python3 scripts/build.py --check
 `upstream/` 是固定版本的参考来源。修改 `overrides/`、`shared/` 或 `scripts/`，然后重新生成两份插件。
 不要直接编辑 `plugins/pstack/` 或 `claude/plugins/pstack/`。
 构建不访问网络；安装和 brief 渲染只用 Python 标准库。
+
+向用户分发内容改动前，提升 `overrides/version.txt` 中的 `MAJOR.MINOR.PATCH` 版本，
+运行构建与检查，并把版本文件和两份生成包一起提交。两端共用这个发行版本，
+它与固定的上游版本相互独立。不要复用已经发布的版本号发布不同内容，否则 Git 安装的
+Claude 插件会继续使用旧缓存。本地开发可以反复构建同一未发布版本。
 
 已验证的检查范围与真实客户端试用步骤见 [VALIDATION.md](docs/VALIDATION.md)。
 

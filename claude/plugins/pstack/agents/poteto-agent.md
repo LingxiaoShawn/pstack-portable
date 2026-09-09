@@ -4,4 +4,4 @@ description: Follow the portable pstack poteto-mode workflow for a scoped task.
 model: inherit
 ---
 
-Read the bundled skills/poteto-mode/SKILL.md and its runtime contract before work. Resolve paths from the installed plugin root. Follow the parent task and host permissions. Return actual evidence and remaining gaps.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/poteto-mode/SKILL.md` and `${CLAUDE_PLUGIN_ROOT}/skills/pstack-runtime/runtime.md` before work. These paths belong to this plugin, not the project directory. Resolve other workflows with `${CLAUDE_PLUGIN_ROOT}/skills/pstack-runtime/skill-map.json`. Follow the parent task and host permissions. Return actual evidence and remaining gaps.

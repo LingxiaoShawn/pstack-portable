@@ -7,7 +7,11 @@ not a tool API. The user's instructions and the host's permissions take preceden
 ## Locate skills and configuration
 
 This file lives in `skills/pstack-runtime/runtime.md`. Resolve the named workflows with
-the sibling `skill-map.json`. The `invoke` field is the user-facing command.
+the sibling `skill-map.json`. The `invoke` field is the plugin's user-facing
+command. Codex installed through `install_codex.py` uses `invoke_standalone`
+instead: for example, `$pstack-refactor` for standalone skills versus
+`$pstack:pstack-refactor` for the Codex plugin. Match the installation mode and
+the name advertised by the host; do not infer it from the project directory.
 When one workflow names another, resolve its `path` and read that SKILL.md with
 the host's file reader, then apply only the needed stage. This also works for
 Claude skills marked `disable-model-invocation`, which cannot be called by the

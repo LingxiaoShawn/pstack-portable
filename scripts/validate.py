@@ -34,6 +34,11 @@ def validate_plugin(root, client):
     for logical, info in mapping.items():
         path = (shared / info["path"]).resolve()
         assert path.is_relative_to(root.resolve()) and path.is_file(), logical
+        skill_name = frontmatter(path.read_text())[0]["name"]
+        prefix = "$" if client == "codex" else "/"
+        assert info["invoke"] == f"{prefix}{manifest['name']}:{skill_name}", logical
+        if client == "codex":
+            assert info["invoke_standalone"] == "$" + skill_name, logical
     for path in (root / "skills").rglob("*.md"):
         prose = re.sub(r"```.*?```", "", path.read_text(), flags=re.S)
         prose = re.sub(r"`[^`]*`", "", prose)
