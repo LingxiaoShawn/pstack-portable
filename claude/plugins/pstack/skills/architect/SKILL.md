@@ -14,11 +14,13 @@ local change does not need a separate architecture exercise.
 
 ## Scope and ownership
 
-For a design request, return a design. When another workflow calls architect,
+For a request limited to design, return a design. When another workflow calls architect,
 return the requested design stage to that task owner; do not implement or restart
-its workflow. For an explicit design-and-build request owned here, continue into
-implementation after choosing the design. Honor a requested checkpoint; otherwise
-continue authorized work without adding an approval gate.
+its workflow. When the user's request includes changing or rebuilding code and
+this task is owned here, continue implementation after choosing the design. Infer
+scope from the full request, not the skill name or a required phrase. Honor a
+requested checkpoint; otherwise continue authorized work without adding an
+approval gate.
 
 ## Ground
 

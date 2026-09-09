@@ -1,13 +1,8 @@
 ---
 name: principle-type-system-discipline
-description: Apply when designing types, reviewing a function signature, or writing
-  code in any statically-typed language. Make illegal states unrepresentable, brand
-  semantic primitives, parse external data at boundaries, refuse to lie to the compiler,
-  exhaust variants, derive from authoritative schemas.
+description: "Apply when designing types, reviewing a function signature, or writing code in any statically-typed language. Make illegal states unrepresentable, brand semantic primitives, parse external data at boundaries, refuse to lie to the compiler, exhaust variants, derive from authoritative schemas."
 disable-model-invocation: true
 ---
-
-Read [the pstack runtime](../pstack-runtime/runtime.md) before acting; it defines host tools, model fallback, skill lookup and scope.
 
 # Type System Discipline
 
