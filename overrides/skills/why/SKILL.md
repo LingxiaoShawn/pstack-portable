@@ -1,11 +1,7 @@
 ---
 name: why
-description: Investigate a code decision's historical rationale using cited evidence;
-  expand beyond code and Git history when a specific question remains unresolved.
-disable-model-invocation: true
+description: "Investigate a code decision's historical rationale using cited evidence; expand beyond code and Git history when a specific question remains unresolved."
 ---
-
-Read [the pstack runtime](../pstack-runtime/runtime.md) before acting; it defines host tools, model fallback, skill lookup and scope.
 
 # Why
 

@@ -1,25 +1,34 @@
 ### Eval
 
-**You own the experiment design. Plan, blind, run, synthesize.**
+Evaluate whether a workflow helps complete realistic tasks, not merely whether
+the agent follows its instructions.
 
-**Non-negotiables for blinding:**
+1. Define the comparison, acceptance criteria and resource budget before running.
+   For productivity claims compare the native client with the same project
+   instructions, a minimal guidance variant and the full workflow. Keep task,
+   initial commit, model/version, tools and permissions fixed when measuring the
+   effect of guidance. Model comparisons require the actual requested models.
+2. Use fresh isolated task directories and sessions. Provide the same realistic
+   user request and required project context. Keep expected answers and private
+   scoring guidance separate. Do not remove legitimate test files or normal
+   project terminology to conceal the evaluation.
+3. Run within the authorized budget using the actual host capabilities. Parallel
+   execution is optional; account for resource contention when timing. Repeat
+   trials to estimate variability when making comparative productivity claims.
+   A single trial is a smoke check, not evidence of a general improvement.
+4. Verify artifacts against objective acceptance checks. Measure completion
+   quality, elapsed time, token usage when exposed, user interventions and rework.
+   Judge qualitative outcomes using consistent criteria and neutral variant
+   labels. A separate reviewer is useful when available and permitted; label
+   self-review accurately. Review disagreement is a reason to inspect evidence,
+   not proof that a model is biased.
+5. Use only host- or user-supplied current-task transcripts for diagnostics. Skill
+   calls can help explain an outcome but are not the primary success measure.
+   Never invent timing, token counts, reviewers or transcript coverage.
+6. Report results, failures, limits and whether the evidence supports adopting
+   the variant. Repository packaging tests validate installation and generation;
+   they do not establish productivity.
 
-- No `eval`, `test`, `judge`, `experiment`, `rubric`, `score`, `compare`, `benchmark`, `candidate`, or `arena` in any directory, file, or prompt the candidate sees.
-- The candidate prompt looks like an organic user request. State the goal, not the meta.
-- No chain-eliciting cues. Don't ask the candidate to list which skills, principles, or files they applied. Ask for design notes generally and grade chain-following from code shape, not self-report.
-- Sanitize directory and slug names. Use project-shaped names a user might pick.
-- Don't tell the candidate other candidates exist.
-- The judge can know it's judging but sees outputs by sanitized label only, never by model name.
-- Comparing two variants: one judge scores both sets in a single pass on one scale, blind to which set each came from.
-
-**Steps:**
-
-1. **Frame.** State what variant is under test and what behavior counts as success. Write the rubric (3-6 concrete criteria) for the judge only. Hold it back from candidates.
-2. **Set up sanitized environments.** Per-candidate working dir with the variant in place. Plant any context an organic task would have: a project skeleton, the skills the candidate would naturally read.
-3. **Author one organic prompt.** What a user would type. No leakage of what's being measured.
-4. **Spawn N parallel candidates** on different models per the **arena** skill's Phase B. Each works in its own sanitized dir. Same prompt to each.
-5. **Spawn one blinded judge** on a different model family per the **arena** skill's Phase C. Judge sees outputs by sanitized label and the rubric, never a model name.
-6. **Verify the chain from transcripts, not self-report.** Read each candidate's local transcript from the host-exposed current-project transcript, if available. Do not glob across `unrelated project transcript directories`. That crosses workspace boundaries and reads private chats from unrelated projects. Look at which files each candidate actually opened. Grade chain-following from the files it really read plus the shape of the code, never from the candidate's own claims.
-7. **Read every candidate output yourself** end to end. Compare to the judge's verdict. Disagreement means a model is biased or the rubric is ambiguous. Synthesize.
-
-**Reply:** variant under test, rubric, per-candidate notes, judge's verdict, your synthesis, and a recommendation for whether to promote the variant.
+Keep evaluation artifacts outside the working tree unless a reusable fixture or
+report is part of the task. Missing capability is a limitation to disclose, not a
+reason to silently substitute a different experiment.

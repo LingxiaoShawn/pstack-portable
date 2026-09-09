@@ -1,10 +1,7 @@
 ---
-name: pstack-principle-boundary-discipline
-description: Place validation where trust, ownership or state guarantees change; keep
-  domain logic separate from transport and framework wiring.
+name: principle-boundary-discipline
+description: "Place validation where trust, ownership or state guarantees change; keep domain logic separate from transport and framework wiring."
 ---
-
-Read [the pstack runtime](../pstack-runtime/runtime.md) before acting; it defines host tools, model fallback, skill lookup and scope.
 
 # Boundary discipline
 

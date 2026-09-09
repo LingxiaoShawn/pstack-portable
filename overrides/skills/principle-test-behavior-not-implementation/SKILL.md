@@ -1,11 +1,7 @@
 ---
 name: principle-test-behavior-not-implementation
-description: Choose tests that detect a meaningful behavior regression, using observable
-  results and effects rather than mirroring implementation.
-disable-model-invocation: true
+description: "Choose tests that detect a meaningful behavior regression, using observable results and effects rather than mirroring implementation."
 ---
-
-Read [the pstack runtime](../pstack-runtime/runtime.md) before acting; it defines host tools, model fallback, skill lookup and scope.
 
 # Test behavior, not implementation
 

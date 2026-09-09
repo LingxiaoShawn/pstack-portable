@@ -21,8 +21,8 @@ Read [the pstack runtime](../pstack-runtime/runtime.md) before acting; it define
    Keep actual bug fixes distinct. Do not chase a line-count or complexity score.
 6. Verify the contract and review the resulting diff. Do not weaken tests or
    thresholds to make the rewrite pass. Preserve unrelated work.
-7. Explain the useful structural change and verification. For a larger handoff,
-   use brief after the final code is settled.
+7. Explain the useful structural change and verification. Use brief after the
+   final code is settled when a presentation or visual handoff is useful.
 
 For broader structural work, follow the refactoring playbook under poteto-mode.
 If a proposed simplification makes the code harder to understand, leave it out.

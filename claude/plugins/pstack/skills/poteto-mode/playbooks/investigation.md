@@ -1,14 +1,16 @@
 ### Investigation
 
-**You own the answer. Plan, route, write.**
+Answer the question with evidence. Investigation alone is read-only.
 
-Investigation requests are read-only. They produce a cited explanation or a recommendation, not a code change.
+Inspect the relevant code directly for a narrow question. Use how to trace a
+broader flow and why when the question is historical intent. Reuse existing
+findings and stop when the question is answered; a plan, throughput checkpoint
+and multiple workers are not required.
 
-1. Route through the **how** skill. For motivation questions, also route through the **why** skill.
-2. Throughput checkpoint stays one line: `throughput checkpoint: n/a, read-only investigation`.
-3. Produce the `how`-shaped output (Overview / Key Concepts / How It Works / Where Things Live / Gotchas), or a recommendation with a tradeoffs table if the request is a decision between alternatives.
-4. Apply the **unslop** skill to the reply.
+Lead with the answer, then the code evidence and material uncertainty. Use an
+example or comparison table when it helps. Do not impose a full report template
+on a small question.
 
-No PR, no babysit, no `architect` unless the investigation precedes a code change. If it does, hand back to the user and re-route to Bug fix or Feature.
-
-**Reply:** the investigation output. For "are we sure?" answers, include your real judgment with reasons. Push back if the premise is wrong (see Autonomy).
+If the user's task already includes implementation, pass the findings forward and
+continue the authorized change. Otherwise provide the explanation or recommendation
+without editing code, opening a PR or adding an approval workflow.

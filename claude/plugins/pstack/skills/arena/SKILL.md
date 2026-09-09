@@ -11,6 +11,14 @@ Read [the pstack runtime](../pstack-runtime/runtime.md) before acting; it define
 
 Define the artifact and a task-specific rubric before producing candidates.
 Prefer two meaningfully different designs to many cosmetic variants.
+Use arena when comparing alternatives can resolve a consequential uncertainty
+or the user requests a comparison. Do not repeat it merely because a design or
+implementation stage calls another skill. Reuse viable existing candidates.
+
+Start with two candidates and one comparison pass unless the requested experiment
+needs another size. Give candidates a bounded artifact to produce, not the arena
+or parent orchestration instructions; they must not launch their own panels.
+Expand only to address a named gap that the existing candidates cannot resolve.
 
 Give each candidate the same requirements and a separate output directory or
 worktree. Use independent workers when available and permitted. Use only supported

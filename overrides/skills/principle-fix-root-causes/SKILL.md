@@ -1,11 +1,7 @@
 ---
 name: principle-fix-root-causes
-description: Trace a defect to its mechanism and fix the violated contract while retaining
-  necessary validation and containment.
-disable-model-invocation: true
+description: "Trace a defect to its mechanism and fix the violated contract while retaining necessary validation and containment."
 ---
-
-Read [the pstack runtime](../pstack-runtime/runtime.md) before acting; it defines host tools, model fallback, skill lookup and scope.
 
 # Fix root causes
 

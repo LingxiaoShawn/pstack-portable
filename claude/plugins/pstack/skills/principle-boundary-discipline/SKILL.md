@@ -1,38 +1,28 @@
 ---
 name: principle-boundary-discipline
-description: Apply when wiring validation, error handling, or framework adapters.
-  Concentrate guards at system boundaries (CLI, config, network, external APIs); trust
-  internal types and keep business logic in pure functions.
+description: Place validation where trust, ownership or state guarantees change; keep
+  domain logic separate from transport and framework wiring.
 disable-model-invocation: true
 ---
 
 Read [the pstack runtime](../pstack-runtime/runtime.md) before acting; it defines host tools, model fallback, skill lookup and scope.
 
-# Boundary Discipline
+# Boundary discipline
 
-Place validation, type narrowing, and error handling at system boundaries. Trust internal code unconditionally. Business logic lives in pure functions. The shell is thin and mechanical.
+Validate external data and narrow it into domain types at entry points such as
+CLI parsing, configuration, network responses and persisted state. Keep domain
+logic independent of framework wiring where that improves clarity and testing.
 
-**Why:** Scattered validation is noisy, redundant, and gives a false sense of safety. Keep logic out of framework wiring so it can be tested without the framework.
+Inside a validated, stable domain, reuse established invariants instead of
+repeating checks at every call. Types alone do not establish runtime guarantees:
+mutable shared state, asynchronous work, casts, plugins, old serialized data and
+foreign-language boundaries may invalidate an earlier assumption. Check where a
+guarantee changes or enforce it structurally, such as an atomic state transition.
 
-**The pattern:**
-- **At boundaries** (CLI args, config files, external APIs, network protocols): validate, return errors, handle defensively.
-- **Inside the system:** typed data, error propagation, no re-validation. Trust the types.
-- **Across the boundary.** Expose domain concepts, not the boundary's private representation. Keep general-purpose mechanism inside and special-purpose policy at the edge.
+Separate malformed input from expected domain failures and broken invariants.
+Preserve useful error propagation and necessary runtime assertions. Do not remove
+a check merely because its function is called internally.
 
-**Applications:**
-
-Validation and error handling:
-- Validate config at parse time (the boundary), not inside business logic
-- Parse raw data into domain types at the boundary
-- Do not re-export transport, storage, framework, or wire types through the public surface
-- No redundant nil checks deep in call chains if the boundary already validated
-
-Code organization:
-- Business logic in pure functions with no framework dependencies
-- Parse functions: pure transforms from raw bytes to typed state
-- Prompt construction: structured state in, string out
-- Scoring and assessment: pure transforms from state to results
-
-**The tests:**
-- "Is this data crossing a system boundary right now?" If not, validation is redundant.
-- "Can this be a pure function that the shell just calls?" If yes, extract it.
+Expose domain concepts rather than leaking transport details when the public
+contract benefits. Prefer pure transforms for business rules when practical,
+without extracting trivial wrappers solely to satisfy a layering rule.

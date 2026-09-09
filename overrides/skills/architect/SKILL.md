@@ -1,11 +1,7 @@
 ---
 name: architect
-description: Design types, interfaces and module boundaries when consequential structural
-  choices remain open, or when the user asks for a design.
-disable-model-invocation: true
+description: "Design types, interfaces and module boundaries when consequential structural choices remain open, or when the user asks for a design."
 ---
-
-Read [the pstack runtime](../pstack-runtime/runtime.md) before acting; it defines host tools, model fallback, skill lookup and scope.
 
 # Architect
 

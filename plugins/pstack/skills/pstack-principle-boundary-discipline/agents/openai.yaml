@@ -1,6 +1,6 @@
 interface:
   display_name: pstack · principle-boundary-discipline
-  short_description: Apply when wiring validation, error handling, or framework adapters.
-    Concentrate guards at system bo
+  short_description: 'Place validation where trust, ownership or state guarantees
+    change; keep domain logic separate from '
 policy:
   allow_implicit_invocation: false

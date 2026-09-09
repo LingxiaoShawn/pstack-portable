@@ -1,20 +1,20 @@
-# Architect runner prompt
+# Architect candidate
 
-The orchestrator passes this file through to every parallel candidate runner during Phase B and fills in the variable inputs around it: the task, the Phase A grounding artifacts, the isolated working directory, and the path to write outputs. The working directory is a git worktree when available, otherwise a per-runner subdirectory under the sketch dir. What matters is independence between candidates.
+Produce one design candidate for the supplied task, acceptance criteria, current
+code evidence and assigned output location. This is a bounded design task. Do not
+invoke architect or arena, spawn another panel, implement production code, or
+change files outside the assigned output.
 
-You are producing one candidate design in architect's parallel exploration. Read the **architect** skill in full first. That's the workflow you're inside. Output a candidate design package: type sketch, function signatures, module map, and prose rationale shaped per [`rationale-template.md`](rationale-template.md).
+Show a realistic caller example first, then the types, signatures, data ownership
+and module boundaries it requires. Explain the principal tradeoff. Use
+[rationale-template.md](rationale-template.md) for substantial designs, keeping
+only relevant sections. Mark unverified assumptions.
 
-Apply the following discipline. The orchestrator compares candidates on these axes to pick a base.
+Consider error behavior, compatibility, concurrent writes and repeated or
+interrupted operations where they affect the task. Prefer enforceable invariants
+and interfaces that hide complexity. Retain runtime checks for values or state
+that types and earlier validation cannot guarantee.
 
-- Caller's usage first. Write the README-style usage and two or three real call sites before the types, then derive the type sketch from them. The usage is the spec. The two must agree, so reconcile the sketch to the usage, not the reverse.
-- Data structures first. Get the core types right and the code becomes obvious. Trace each dominant access pattern through the proposed structure. If the answer is "we'll add a map / index / cache later," the structure is wrong.
-- Interface depth. Compare the capability hidden behind the public surface relative to the size of that surface. Prefer a simple interface that pulls complexity into the callee, even when the implementation becomes less simple. Do not put transport or wire types on the public API. Parse into domain types behind the interface.
-- Shared state: if two actors might both write, ask "what happens?" If the answer isn't "nothing," default to per-actor state with a merge at the read boundary, per the **separate-before-serializing-shared-state** principle skill.
-- Make boundaries visible. `not implemented` errors for bodies, `// TODO` pseudocode for tricky logic, doc comments stating intent and invariants. A reader should trace data from input to output by reading types and signatures alone.
-- Encode invariants in types: hard-to-misuse types > runtime checks > prose comments, per the **encode-lessons-in-structure** principle skill.
-- Validate at boundaries, trust types inside, per the **boundary-discipline** principle skill. Business logic as pure functions. The shell stays thin.
-- Single source of truth per invariant. Derive instead of sync.
-- Idempotent state transitions where applicable, per the **make-operations-idempotent** principle skill. Ask what happens if the operation runs twice or crashes halfway.
-- Short call chains. If tracing the flow needs more than three files, flatten the hierarchy, per the **laziness-protocol** and **minimize-reader-load** principle skills.
-
-You are one of several runners, each on a different model. Produce the best design your model can make. Don't hedge against the others. Differences between candidates are the signal used to pick a base and graft. Converging on a safe-looking middle defeats the exploration.
+Follow the assigned design direction when provided. Otherwise choose and explain
+one viable direction. Return your artifact and unresolved questions to the owner;
+the owner compares candidates. Do not assume other models or reviewers exist.

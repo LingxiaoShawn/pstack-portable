@@ -17,13 +17,19 @@ Work toward the user's actual outcome. Scale the process to the change.
    not automatically for every function call.
 3. Establish the behavior or acceptance criteria that the change must satisfy.
    Implement in small verifiable units. Use a bounded plan for multi-step work.
-4. Use deslop for a focused cleanup before handing off code. Use no-comments only
+4. Review the diff; use deslop when a focused cleanup is useful. Use no-comments only
    to remove noise; retain meaningful constraints and rationale.
 5. Verify the result against the real artifact. State what was checked and what
    remains unverified. Opening a PR, merging, deployment and external messages
    happen only when included in the user's task or existing authorization.
 6. Lead the reply with the outcome in the user's language. Explain the significant
-   choice plainly. Use brief for a substantial change the user needs to understand.
+   choice plainly. Use brief for a requested presentation or useful visual handoff.
+
+Reuse results from earlier stages while their inputs are current. A small change
+with a settled design can go directly to implementation and relevant checks.
+When calling architect inside implementation work, request design-only output;
+this task owner continues implementation and verification. A called stage never
+restarts this whole workflow. Follow the runtime's exploration limits.
 
 Read the runtime contract before dispatch. Use actual host workers only when
 available and appropriate. Otherwise work locally and sequentially. The parent
