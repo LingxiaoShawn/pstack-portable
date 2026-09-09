@@ -1,8 +1,8 @@
 ### Orchestrate
 Break the requested program into units with explicit dependencies, input refs,
 owned paths, completion checks and status. Keep one durable project-local
-checkpoint. The optional scripts/orch/orch ledger can manage this state when
-Bun is available; it does not schedule or host agents.
+checkpoint. The optional [scripts/orch/orch.ts](../scripts/orch/orch.ts) ledger
+can manage this state when Bun is available; it does not schedule or host agents.
 
 Use the host's native workers in bounded waves when supported and permitted.
 Isolate writing work. The coordinator can implement a small unit directly rather

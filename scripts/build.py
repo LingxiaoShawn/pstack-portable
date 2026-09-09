@@ -13,6 +13,21 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 MODEL = re.compile(r"(?:claude-fable-[\w.-]+|claude-opus-[\w.-]+|grok-[\w.-]+|gpt-5\.[\w.-]+)")
 TARGETS = {"codex": Path("plugins/pstack"), "claude": Path("claude/plugins/pstack")}
+MARKETPLACES = {
+    Path(".agents/plugins/marketplace.json"): {
+        "name": "pstack-portable",
+        "interface": {"displayName": "pstack portable"},
+        "plugins": [{"name": "pstack", "source": {"source": "local", "path": "./plugins/pstack"},
+                     "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
+                     "category": "Productivity"}],
+    },
+    Path(".claude-plugin/marketplace.json"): {
+        "name": "pstack-portable",
+        "owner": {"name": "Lingxiao Zhao; upstream by Lauren Tan"},
+        "metadata": {"description": "Portable pstack workflows for readable code and verified handoffs."},
+        "plugins": [{"name": "pstack", "source": "./claude/plugins/pstack"}],
+    },
+}
 
 
 def frontmatter(content):
@@ -147,6 +162,15 @@ def main():
                     shutil.rmtree(target)
                 shutil.copytree(generated, target)
             print(f"{client}: {count} skills")
+        for relative, data in MARKETPLACES.items():
+            target = ROOT / relative
+            content = json.dumps(data, indent=2) + "\n"
+            if args.check:
+                if not target.is_file() or target.read_text(encoding="utf-8") != content:
+                    stale.append(str(relative))
+            else:
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text(content, encoding="utf-8")
     if stale:
         raise SystemExit("Stale generated packages: " + ", ".join(stale))
 
